@@ -10,7 +10,7 @@ $(function(){
   $.each(
     links ,
     function(i,v) {
-        $("#ol_contents").append("<li>" + v + "</li>") ;
+        $("#ol_contents").append("<li><a href=" + v.url  + ">" + v.label + "</a></li>") ;
     }
 ) ;
 
