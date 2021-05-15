@@ -12,7 +12,12 @@ $(function(){
     {
       label: "Week 3",
       url: "week3/"
+    },
+    {
+      label: "Week 4",
+      url: "week4/"
     }
+
   ]
 
   $.each(
