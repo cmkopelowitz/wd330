@@ -8,6 +8,9 @@ const filter_uncompleted = document.querySelector('#filter-uncompleted');
 const tasks_left = document.querySelector('#tasks-left');
 
 window.onload = function() {
+  if (localStorage.length == 0) {
+    localStorage.setItem('counter', 0);
+  }
   filter_all.classList.add('active-filter-option');
   updateTasksLeft(parseInt(localStorage.getItem('counter')));
   renderAllItems()
