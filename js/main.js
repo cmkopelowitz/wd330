@@ -16,6 +16,10 @@ $(function(){
     {
       label: "Week 4",
       url: "week4/"
+    },
+    {
+      label: "Midterm",
+      url: "todo/"
     }
 
   ]
