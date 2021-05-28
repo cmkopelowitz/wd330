@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin: 2rem auto;
+      width: 600px;
+    }
+
+    header {
+      padding-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    ul li {
+      cursor: pointer;
+      position: relative;
+      padding: 12px 8px 12px 40px;
+      background: #eee;
+      font-size: 18px;
+      transition: 0.2s;
+    }
+
+
+    ul li:hover {
+      background: #ddd;
+    }
+
+    ul li.checked {
+      background: #888;
+      color: #fff;
+      text-decoration: line-through;
+    }
+
+    .close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 12px 16px 12px 16px;
+    }
+
+    .close:hover {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .filter-menu {
+      display: block;
+      margin: 10px 0px;
+    }
+    
+    .filter-menu-item {
+      padding: 12px 16px 12px 16px;
+      font-size: 16px;
+    }
+
+    #tasks-left {
+      display: block;
+      float: left;
+    }
+
+    .filter-option {
+      cursor: pointer;
+      display: block;
+      float: right;
+      padding: 12px 16px 12px 16px;
+      font-size: 16px;
+    }
+
+    .active-filter-option {
+      border: 2px solid black;
+    }
+
+    .inp-box {
+      display: flex;
+      /* display: block; */
+    }
+
+    #inp-item {
+      width: 100%;
+    }
+
+    /* Style the close button */
+    .close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 12px 16px 12px 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>TODO</h1>
+    </header>
+
+    <div class="inp-box">
+      <input id="inp-item" type="text">
+      <button id="btn-submit">Add task</button>
+    </div>
+
+    <div class="filter-menu">
+      <div id="tasks-left" class="tasks-left-box filter-menu-item">1 task left</div>
+      <div id="filter-completed" class="filter-menu-item filter-option">Completed</div>
+      <div id="filter-uncompleted" class="filter-menu-item filter-option">Uncompleted</div>
+      <div id="filter-all" class="filter-menu-item filter-option">All</div>
+    </div>
+    <hr>
+    <ul id="list">
+    </ul>
+
+    
+
+  </div>
+
+
+  
+<script src="/js/todo.js"></script>
+</body>
+</html>
