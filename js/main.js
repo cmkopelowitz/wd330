@@ -20,7 +20,13 @@ $(function(){
     {
       label: "Midterm",
       url: "todo/"
-    }
+    },
+    {label: "Block 2",
+     url: "germanstudytool/" },
+     {label: "week10",
+    url: "/week10"},
+     {label: "team 10",
+      url: "/week10/team.html"}
 
   ]
 
