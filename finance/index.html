@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+    }
+
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 9px;
+      top: 85px;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .btn {
+      padding: 7px 16px 6px;
+    }
+
+    table,
+    th,
+    td {
+      text-align: left;
+      border: 1px black solid;
+    }
+
+    th,
+    td {
+      padding: 5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      height: 30px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f5f5f5;
+    }
+
+    tr:hover {
+      background-color: rgb(229, 255, 187);
+    }
+  </style>
+</head>
+
+<body>
+  <div><a href="/">home</a></div>
+  <button id="add-entry" class="btn">+ Transaction</button>
+  <div class="hidden" id="add-entry-drop">
+    <form action="#" id="form-add-entry">
+      <div>
+        <label for="entry-date">Date:</label>
+        <input type="date" name="entry-date" id="input-entry-date" required>
+      </div>
+      <div>
+        <label for="category">Category:</label>
+        <select name="category" id="select-category" required>
+          <!-- TODO: I should generate these with JS -->
+          <option value="">--Choose a category--</option>
+          <option value="income">Income</option>
+          <option value="home">Home & Utililities</option>
+          <option value="grocery">Grocery</option>
+          <option value="transportation">Transportation</option>
+          <option value="dinning">Resturants & Dinning</option>
+          <option value="personal">Personal & Family Care</option>
+          <option value="giving">Giving</option>
+          <option value="shopping">Shopping & Entertainment</option>
+          <option value="education">Education</option>
+        </select>
+      </div>
+      <div>
+        <label for="title">Description:</label>
+        <input type="text" name="description" id="input-description" required> <!-- TODO: probably should have a max-->
+      </div>
+      <div>
+        <label for="amount">Amount:</label>
+        <input type="number" required id="input-amount">
+      </div>
+      <div>
+        <label for="input-repeating">Repeating?</label>
+        <input type="checkbox" name="repeating" value="yes" id="input-repeating">
+      </div>
+      <div class="hidden" id="repeating-drop">
+        <div>
+          <label for="">Frequency</label>
+          <select name="frequency" id="frequency" disabled>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="Yearly">Yearly</option>
+          </select>
+        </div>
+        <div>
+          <label for="until-date">Until:</label>
+          <input type="date" name="until-date" disabled>
+        </div>
+      </div>
+      <div>
+        <input type="submit" value="Submit" id="submit-entry">
+      </div>
+    </form> <!-- /#form-add-entry -->
+  </div>
+
+  <div class="tab">
+    <button>Month</button>
+    <button>Week</button>
+    <button>Today</button>
+
+    <div class="dropdown">
+      <button id="button-last-days">Last ...</button>
+      <div class="dropdown-content" id="last-days-drop">
+        <input type="number" name="last-days" id="input-last-days" value="3"> <!-- this should have contraints!! -->
+        <label for="input-last-days">days</label>
+      </div>
+    </div>
+
+    <div class="dropdown" style="float: right;">
+      <button id="btn-filter">Filter</button>
+      <div class="dropdown-content" id="filter-drop">
+        category:
+        <!-- TODO: I should generate these with JS. There could be more categories later -->
+        <div>
+          <input type="checkbox" id="filter-input" name="filter-category" value="income">
+          <label for="filter-income">Income</label>
+        </div>
+        <div>
+          <input type="checkbox" id="filter-home" name="filter-category" value="home">
+          <label for="filter-home">Home & Utilities</label>
+        </div>
+        <div>
+          <input type="checkbox" id="filter-grocery" name="filter-category" value="grocery">
+          <label for="filter-grocery">Grocery</label>
+        </div>
+        <div>
+          <input type="checkbox" id="filter-transportation" name="filter-category" value="transportation">
+          <label for="filter-transportation">Transportation</label>
+        </div>
+        <div>
+          <input type="checkbox" id="filter-dinning" name="filter-category" value="dinning">
+          <label for="filter-dinning">Resturant & Dinning</label>
+        </div>
+        <div>
+          <input type="checkbox" id="filter-personal" name="filter-category" value="personal">
+          <label for="filter-personal">Personal & Family Care</label>
+        </div>
+
+        <div>
+          <input type="checkbox" id="filter-giving" name="filter-category" value="giving">
+          <label for="filter-giving">Giving</label>
+        </div>
+        <div>
+          <input type="checkbox" id="filter-shopping" name="filter-category" value="shopping">
+          <label for="filter-shopping">Shopping & Entertainment</label>
+        </div>
+        <div>
+          <input type="checkbox" id="filter-education" name="filter-category" value="education">
+          <label for="filter-education">Education</label>
+        </div>
+        <div>
+          <button>Apply Filters</button>
+        </div>
+      </div> <!-- /.dropdown-content -->
+    </div> <!-- /.dropdown-->
+
+  </div> <!-- /.tab-->
+
+
+  <div>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Amount</th>
+      </tr>
+      <tr>
+        <td>
+          mm/dd/yyyy
+        </td>
+        <td>
+          Power bill
+        </td>
+        <td>Home & Utilities</td>
+        <td>
+          $80.00
+        </td>
+      <tr>
+        <td>
+          mm/dd/yyyy
+        </td>
+        <td>
+          Power bill
+        </td>
+        <td>Home & Utilities</td>
+        <td>
+          $80.00
+        </td>
+      </tr>
+      <tr>
+        <td>
+          mm/dd/yyyy
+        </td>
+        <td>
+          Power bill
+        </td>
+        <td>Home & Utilities</td>
+        <td>
+          $80.00
+        </td>
+    </table>
+  </div>
+
+  <script src="https://pagecdn.io/lib/localforage/1.9.0/localforage.min.js"></script>
+  <script type="module" src="/js/view.js"></script>
+  <script type="module" src="/js/db.js"></script>
+  <script type="module" src="/js/finance.js"></script>
+</body>
+
+</html>
