@@ -1,5 +1,5 @@
-import * as db from '/js/db.js'
-import * as view from '/js/view.js'
+import * as db from 'https://cdn.jsdelivr.net/gh/cmkopelowitz/wd330@master/js/db.js'
+import * as view from 'https://cdn.jsdelivr.net/gh/cmkopelowitz/wd330@master/js/view.js'
 //Date.getDay returns day of the week
 //Date.getDate returns day of the month
 //chart.js will work
