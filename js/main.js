@@ -1,4 +1,4 @@
-$(function(){
+$(function () {
 
   const links = [
     {
@@ -21,20 +21,26 @@ $(function(){
       label: "Midterm",
       url: "todo/"
     },
-    {label: "Block 2",
-     url: "germanstudytool/" },
-     {label: "week10",
-    url: "/week10"},
-     {label: "team 10",
-      url: "/week10/team.html"}
+    {
+      label: "Block 2",
+      url: "finance/"
+    },
+    {
+      label: "week10",
+      url: "/week10"
+    },
+    {
+      label: "team 10",
+      url: "/week10/team.html"
+    }
 
   ]
 
   $.each(
-    links ,
-    function(i,v) {
-        $("#div_sidenav").append("<a href=" + v.url  + ">" + v.label + "</a>");
+    links,
+    function (i, v) {
+      $("#div_sidenav").append("<a href=" + v.url + ">" + v.label + "</a>");
     }
-) ;
+  );
 
 });
