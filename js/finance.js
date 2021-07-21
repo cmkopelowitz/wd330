@@ -1,5 +1,3 @@
-import * as db from 'https://cdn.jsdelivr.net/gh/cmkopelowitz/wd330@master/js/db.js'
-import * as view from 'https://cdn.jsdelivr.net/gh/cmkopelowitz/wd330@master/js/view.js'
 //Date.getDay returns day of the week
 //Date.getDate returns day of the month
 //chart.js will work
@@ -50,7 +48,7 @@ window.onload = () => {
   submit_entry.addEventListener('click', (event) => {
     event.preventDefault(); //keep from submitting
     if (validateForm()) {
-      db.addEntry({
+      addEntry({
         date: document.getElementById('input-entry-date').value,
         category: document.getElementById('select-category').value,
         description: document.getElementById('input-description').value,
